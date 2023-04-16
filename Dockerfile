@@ -1,19 +1,8 @@
-FROM alpine:3.17
+FROM debian:stable
 
-ENV DOCKER_CHANNEL=stable \
-    DOCKER_VERSION=23.0.3
+RUN apt-get update && apt-get install --yes curl iproute2
 
-RUN apk --update --no-cache add \
-        bash \
-        curl \
-        device-mapper \
-        iptables \
-        util-linux \
-        ca-certificates \
-        make
-
-RUN curl -fL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" | tar zx && \
-  mv /docker/* /bin/ && chmod +x /bin/docker*
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && rm get-docker.sh
 
 COPY entrypoint.sh /bin/entrypoint.sh
 

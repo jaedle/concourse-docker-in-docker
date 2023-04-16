@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Inspired by concourse/docker-image-resource:
-# https://github.com/concourse/docker-image-resource/blob/master/assets/common.sh
+# copied from karlkfi
+# https://github.com/karlkfi/concourse-dcind/blob/477674e4a27d79fa62099a86aa032017d4292d12/entrypoint.sh
 
 set -o errexit -o pipefail -o nounset
 
